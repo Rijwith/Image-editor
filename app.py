@@ -13,8 +13,6 @@ ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif',"webp"}
 app=Flask(__name__)
 app.config['UPLOAD_FOLDER'] = "static"
 
-#0011 these folder is useless if you are not displaying edited image into the page else showing the image
-
 
 # METHOD FOR ROTATION AND FLIP TO IMAGE
 def rotate_and_flip_image(img, degrees_to_rotate=0, flip_direction=None):
@@ -166,6 +164,17 @@ def uploaded_file(filename):
 
         return render_template("edit.html",width=width,height=height,show=show,filename=filename)
     return render_template("edit.html",width=width,height=height,show=show,filename=filename)
+
+# route for about page
+@app.route('/about', methods=['GET', 'POST'])
+def about():
+    return render_template("about.html")
+
+# route for contact page
+@app.route('/contact', methods=['GET', 'POST'])
+def about():
+    return render_template("contact.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
 
